@@ -1,0 +1,22 @@
+{
+    "name": "rtablada/literate-laravel",
+    "description": "",
+    "authors": [
+        {
+            "name": "Ryan Tablada",
+            "email": "ryan.tablada@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/filesystem": "~4",
+        "illuminate/console": "~4",
+        "rtablada/literatephp": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "Rtablada\\LiterateLaravel": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
