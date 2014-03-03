@@ -18,5 +18,6 @@
             "Rtablada\\LiterateLaravel": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "license": "MIT"
 }
