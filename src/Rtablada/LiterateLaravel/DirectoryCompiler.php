@@ -24,13 +24,13 @@ class DirectoryCompiler
 				$literateSrc = $this->file->get($inPath);
 				$compiledSrc = $this->parser->parse($literateSrc);
 
-				$this->file->put($outPath, $compiledSrc);
+				$this->writeFile($outPath, $compiledSrc);
 			} elseif (strpos($file, '.php')) {
 				$inPath = $file->__toString();
 				$outPath = $this->getOutPath($outDir, $file);
 				$source = $this->file->get($inPath);
 
-				$this->file->put($outPath, $source);
+				$this->writeFile($outPath, $source);
 			}
 		}
 	}
@@ -46,5 +46,22 @@ class DirectoryCompiler
 		$basename = $file->getBasename('.md');
 
 		return "{$outDir}/{$relativePath}/{$basename}";
+	}
+
+	protected function writeFile($path, $contents)
+	{
+		$this->checkDirectory($path);
+
+		$this->file->put($path, $contents);
+	}
+
+	protected function checkDirectory($path)
+	{
+		$outFile = new \SplFileInfo($path);
+		$directory = $outFile->getPath();
+
+		if (!$this->file->exists($directory)) {
+			$this->file->makeDirectory($directory, 0777, true);
+		}
 	}
 }
