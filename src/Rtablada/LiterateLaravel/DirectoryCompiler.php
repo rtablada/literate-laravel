@@ -28,8 +28,9 @@ class DirectoryCompiler
 			} elseif (strpos($file, '.php')) {
 				$inPath = $file->__toString();
 				$outPath = $this->getOutPath($outDir, $file);
+				$source = $this->file->get($inPath);
 
-				$this->file->put($outPath, $compiledSrc);
+				$this->file->put($outPath, $source);
 			}
 		}
 	}
