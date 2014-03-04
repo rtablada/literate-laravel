@@ -25,6 +25,11 @@ class DirectoryCompiler
 				$compiledSrc = $this->parser->parse($literateSrc);
 
 				$this->file->put($outPath, $compiledSrc);
+			} elseif (strpos($file, '.php')) {
+				$inPath = $file->__toString();
+				$outPath = $this->getOutPath($outDir, $file);
+
+				$this->file->put($outPath, $compiledSrc);
 			}
 		}
 	}
